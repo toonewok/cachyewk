@@ -1,0 +1,149 @@
+[
+// Feb 19, 2025
+// Redoing rice again lmao
+
+//--------------------------------------------
+// main monitor bar options
+//--------------------------------------------
+
+{
+	"include": "~/.config/waybar/modules.jsonc",
+	"output":"Virtual-1",
+	"layer": "top",
+	"position": "top",
+	//"mode":"dock",
+	"width":0,
+	"spacing": 4,
+	"margin-right": 0,
+	"margin-left": 0,
+	"margin-top": 5,
+	"margin-bottom": 0,
+
+//--------------------------------------------
+// module layout
+//--------------------------------------------
+	"modules-left":
+	[
+	"custom/rofisearch",
+	"group/group-media",
+	"hyprland/window"
+
+			
+	],
+	"modules-center":
+	[	
+		"hyprland/workspaces"
+	],
+	"modules-right":
+	[	
+		"group/group-soft",
+		"group/group-sys",
+		"clock",
+		"custom/power"
+		],
+	"group/group-sys":
+	{
+		"orientation":"horizontal",
+		"modules": [
+			"group/group-sysmon",
+			"network",
+			"pulseaudio"
+		]
+	},
+
+	"group/group-soft":
+	{
+		"orientation":"horizontal",
+		"class":"soft-group",
+		"modules":[
+			"custom/firefox",
+			"custom/filebrowser",
+			"custom/help",
+			"custom/steam",
+			"custom/spotify"
+
+				
+		]
+	},
+
+
+	"group/group-controls":
+	{
+		"orientation":"horizontal",
+		
+		"modules":[
+			"custom/pp",
+			"custom/prev",
+			"custom/next"
+
+		]
+	},
+
+	"group/group-media":
+	{
+		"position": "right",
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 500,
+			"children-class": "not-power",
+			"transition-left-to-right": true
+			  },
+	"modules":["custom/musiclogo","group/group-controls","custom/spotify-out"]
+
+	},
+
+	"group/group-sysmon":
+	{
+		"position": "right",
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 500,
+			"children-class": "not-power",
+			"transition-left-to-right": false
+			  },
+	"modules":["custom/trayic","tray","disk","disk#nvme","disk#ssd","cpu","memory"]
+
+	}
+
+
+
+},
+  {
+	"include": "~/.config/waybar/modules.jsonc",
+	"output":"Virtual-2",
+	"layer": "bottom",
+	"position": "top",
+	//"mode":"dock",
+	"width":0,
+	"spacing": 4,
+	"margin-right": 0,
+	"margin-left": 0,
+	"margin-top": 2,
+	"margin-bottom": 0,
+
+    "modules-center":
+    [
+      "hyprland/workspaces#alt"
+    ]
+  },
+
+  {
+	"include": "~/.config/waybar/modules.jsonc",
+	"output":"Virtual-2",
+	"layer": "bottom",
+	"position": "bottom",
+	//"mode":"dock",
+	"width":0,
+	"spacing": 4,
+	"margin-right": 0,
+	"margin-left": 0,
+	"margin-top": 0,
+	"margin-bottom": 2,
+
+    "modules-center":
+    [
+      "clock"
+    ]
+  }
+]
+

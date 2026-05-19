@@ -1,0 +1,14 @@
+configuration {
+	modi: "drun,filebrowser,run,window";
+	display-drun: " ";
+	display-filebrowser: " ";
+	display-run: " ";
+	display-window: " ";
+	drun-display-format: "{name}";
+	show-icons: false;
+
+
+
+}
+
+@theme "~/.config/rofi/themes/thm0/thm0-fuji.rasi"

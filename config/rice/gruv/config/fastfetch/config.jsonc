@@ -1,0 +1,81 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo" : {
+	"type": "small",
+	"color" :{
+		"1":"blue"
+	}
+	
+  },
+  "logo-padding":10,
+  "modules": [
+        {
+    	    "type": "title",
+	    "format": "{host-name}",
+	    "keyColor": "blue",
+	    "key":" "
+    },
+    {
+	    "type": "cpu",
+	    "format": "{name}",
+	    "keyColor": "blue",
+	    "key":"├ "
+    },
+    {
+	    "type": "gpu",
+	    "format": "{name}",
+	    "keyColor": "blue",
+	    "key": "├󰍹 "
+    },
+    {
+	    "type": "memory",
+	    "format": "{used}/{total}",
+	    "keyColor": "blue",
+	    "key": "└ "
+    },
+
+    		
+	{
+		"type":"disk",
+		"format": "{size-used}/{size-total}",
+		"key": "   󰋊",
+		"keyColor": "blue"
+	},
+
+          {
+	     "type":"os",
+	     "format":"{pretty-name}",
+	     "key": "󰗮",
+	     "keyColor":"blue"
+     },
+     {
+	     "type":"kernel",
+	     "format":"{release}",
+	     "key":"├ ",
+	     "keyColor":"blue"
+     },
+     {
+	     "type":"shell",
+	     "format":"{pretty-name}",
+	     "key":"├ ",
+	     "keyColor":"blue"
+     },
+     {
+	     "type":"wm",
+	     "format":"{pretty-name}",
+	     "key":"├󱩛 ",
+	     "keyColor":"blue"
+     },
+     {
+	     "type":"uptime",
+	     "format": "{hours} hours, {minutes} min",
+	     "key":"└ ",
+	     "keyColor":"blue"
+     },
+          {
+	     "type":"custom",
+	     "format":"\u001b[31m   \u001b[32m   \u001b[33m   \u001b[34m   \u001b[35m   \u001b[97m "
+     }
+    
+  ]
+}

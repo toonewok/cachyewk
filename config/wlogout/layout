@@ -1,0 +1,39 @@
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    
+    "keybind" : "s"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+
+    "keybind" : "r"
+}
+{
+    "label" : "lock",
+    "action" : "hyprlock",
+ 
+    "keybind" : "l"
+}
+{
+    "label" : "sleep",
+    "action" : "hypridle",
+ 
+    "keybind" : "x"
+}
+{
+    "label" : "search",
+    "action" : "rofi -disable-history -show drun",
+    "keybind" : "h"
+}
+{
+    "label" : "sysmon",
+    "action" : "hyprctl dispatch workspace 8",
+    "keybind" : "h"
+}
+
+
+
+
+

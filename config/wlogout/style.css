@@ -1,0 +1,49 @@
+* {
+	background-image: none;
+	box-shadow: none;
+}
+
+window {
+	background-color: rgba(12, 12, 12, 0.9);
+}
+
+*{
+background-color: transparent;
+}
+button {
+	border-style: none;
+    	color: #aaaaaa;
+	background-color: transparent;
+
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 25%;
+}
+
+button:focus, button:active, button:hover {
+	background-color: rgba(170,170,170, 0.1);
+
+}
+
+#lock {
+    background-image: image(url("/home/bailey/.config/wlogout/icons/lock.png"));
+}
+
+
+#shutdown {
+    background-image: image(url("/home/bailey/.config/wlogout/icons/pwr.png"));
+}
+
+#reboot {
+    background-image: image(url("/home/bailey/.config/wlogout/icons/rstrt.png"));
+}
+
+#sleep {
+    background-image: image(url("/home/bailey/.config/wlogout/icons/slp.png"));
+}
+#search {
+    background-image: image(url("/home/bailey/.config/wlogout/icons/srch.png"));
+}
+#sysmon {
+    background-image: image(url("/home/bailey/.config/wlogout/icons/sys.png"));
+}

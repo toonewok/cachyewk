@@ -1,0 +1,121 @@
+#!/bin/bash
+
+ricename=fuji
+
+echo please enter your root/sudo password
+read -s varpw
+
+
+echo "$varpw" | sudo -S pacman -Syy
+
+#installs extra base packages not included with cachy
+echo "$varpw" | sudo -S pacman -S --noconfirm --needed xclip hyprlock hyprpaper nvim rofi waybar zsh nwg-look nemo pavucontrol nerd-fonts spotify-launcher steam virt-manager keepassxc swayidle gimp calibre blender kicad kicad-library inkscape qbittorrent prismlauncher obs-studio vlc shotcut grim imagemagick wl-clipboard
+
+#installs ohmyzsh
+RUNZSH=no CHSH=no KEEPZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+#changes default to zsh
+echo "$varpw" | sudo -S chsh -s "$(which zsh)" "$USER"
+
+#gets zsh plugins
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+#creates basic directories
+mkdir -p ~/Pictures
+mkdir -p ~/Documents
+mkdir -p ~/shellscripts
+
+#sets getty user for hyprlock auto login
+sed -i -e "s|<user>|$USER|g" hyprlockgetty
+
+zshtext=$(cat hyprlockzsh)
+gettytext=$(cat hyprlockgetty)
+
+
+#i want to be able to test this in a vm without it freaking out
+#so i need to be able to determine if im in a vm, i figure
+#the easiest way to do this is to just see if the monitor
+#is Virtual-1
+monname=$(hyprctl monitors all | sed '1!d' | grep Monitor | cut -d ' ' -f 2)
+monres=$(hyprctl monitors all | sed '2!d' | cut -d ' ' -f 1)
+monres=$(echo "$monres"| awk '{print $1}')
+
+if [ "$monname" = "Virtual-1" ]; then
+	echo "vm detected"
+
+else
+	echo "normal system detected, proceeding normally"
+fi
+
+#copies the files to their respective paths
+cp -r config/* ~/.config/
+cp -r Pictures/* ~/Pictures
+cp -r shellscripts/* ~/shellscripts/
+
+#attempting to setup YAY
+cd ~/
+git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -s --noconfirm && echo "$varpw" | sudo -S pacman -U *.pkg.tar.zst --noconfirm
+
+cd ~/
+rm -rf ~/yay-bin
+
+#installs vesktop
+echo "$varpw" | yay -S --noconfirm --needed Vesktop
+
+#installs quickshell and screenshot tool
+echo "$varpw" | yay -S --noconfirm --needed quickshell
+git clone https://github.com/jamdon2/hyprquickshot ~/.config/quickshell/hyprquickshot
+
+
+#installs bibata cursor(this is a good default cursor)
+echo "$varpw" | yay -S --noconfirm --needed bibata-cursor-theme-bin
+
+
+#installs neovim plugins
+nvim +'PlugInstall --sync' +qa
+echo "$nvimtext" >> ~/.config/nvim/init.vim
+
+
+
+echo "Would like to have the system boot directly to hypr?(y/n)"
+read locktog
+
+if [ "$locktog" = "y" ]; then
+
+	echo "$varpw" | sudo -S systemctl enable getty@tty1
+	echo "$varpw" | sudo -S mkdir -p /etc/systemd/system/getty@tty1.service.d
+	echo "$varpw" | sudo touch /etc/systemd/system/getty@tty1.service.d/override.conf
+	echo "$varpw" | sudo -S tee /etc/systemd/system/getty@tty1.service.d/override.conf >/dev/null <<< "$gettytext"
+	cp ~/$ricename/.zshrc ~/
+	echo "$zshtext" >> ~/.zshrc
+	echo "deleting unnecessary programs"
+	echo ""
+	echo "$varpw" | sudo -S pacman -R sddm dolphin --noconfirm
+	rm -rf ~/$ricename
+	echo "done.....system rebooting.....godspeed $USER.....godspeed"
+	sleep 1
+	echo 5
+	sleep 1
+	echo 4
+	sleep 1
+	echo 3
+	sleep 1
+	echo 2
+	sleep 1
+	echo 1
+	sleep 1
+	echo "$varpw" | sudo -S reboot
+
+else
+
+	cp ~/$ricename/.zshrc ~/
+	cp ~/$ricename/post_install ~/
+	echo done....check ~/post_install for instructions on how to bypass default login screen, the system will now reboot in 5 seconds
+	rm -rf ~/$ricename
+	sleep 5
+	echo "$varpw" | sudo -S reboot
+
+fi
+
+#echo done

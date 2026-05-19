@@ -1,0 +1,13 @@
+* {
+    bg0:    #1a1919D2;
+    bg1:    #282828;
+    bg2:    #3D3D3D80;
+    text:   #ebdbb2;
+    fadetext: #a89984;
+    accent:    #689d6a;
+    sel:    #d79221;
+
+
+}
+
+@import "thm0-base.rasi"

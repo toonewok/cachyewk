@@ -1,0 +1,17 @@
+[window]
+opacity = 0.8
+padding.x = 10
+padding.y = 10
+[font]
+size = 16.0
+[font.normal]
+family = "RobotoMono Nerd Font"
+
+[general]
+import = [ "~/.config/alacritty/themes/nightfox-default.toml" ]
+
+[bell]
+duration = 0
+
+[cursor]
+style = {shape = "Beam", blinking = "Always"}

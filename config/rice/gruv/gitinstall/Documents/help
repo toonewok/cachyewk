@@ -1,0 +1,22 @@
+  - MODIFIER(left hand, bottom row, far right key)
+
+ Hyprland controls
+ -----------------------------
+  + ENTER - opens application launcher
+  + Q - closes active window
+  + T - opens terminal
+  + B - opens web browser
+  + F - opens file manager
+  + S - opens steam
+  + 6 - shortcuts to spotify
+  + D - opens discord
+  + any arrow key - moves to active window in direction pressed
+  + any number - moves to that workspace
+  + SHIFT + V - toggles floating window
+  + SHIFT + F - toggles fullscreen
+  + SHIFT + LMB(HOLD) - picks up selected window, release LMB to drop
+  + SHIFT + RMB(HOLD) - resizes selected window, release RMB to stop
+  + SHIFT + any number - moves active window to workspace of number pressed
+
+
+

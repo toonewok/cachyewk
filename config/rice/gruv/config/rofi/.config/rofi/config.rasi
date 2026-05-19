@@ -1,0 +1,11 @@
+configuration {
+	display-drun: "Applications:";
+	display-window: "Windows:";
+	drun-display-format: "{name}";
+	font: "JetBrainsMonoNL NF";
+	modi: "window,run,drun";
+}
+
+@theme "/home/bailey/.local/share/rofi/themes/rounded-gruv.rasi"
+
+

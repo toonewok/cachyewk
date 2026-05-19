@@ -1,0 +1,178 @@
+* {
+	font-family: RobotoMono Nerd Font;
+	color: #ebdbb2;
+
+  }
+
+  window#waybar {
+  	background-color: transparent;
+	border: 2px;
+	border-radius: 2px;
+  }
+
+
+#workspaces {
+	background: rgba(27,27,27,0.6);
+	
+	padding: 0px 1px;
+	border-radius: 15px;
+	font-weight: bold;
+	font-style: normal;
+	opacity: 0.8;
+	font-size: 16px;
+}
+
+#workspaces button {
+	padding: 0px 5px;
+	margin: 4px 3px;
+	border-radius: 15px;
+	border: 0px;
+	background: rgba(27,27,27,0.9);
+	color: rgba(216,230,237,0.8);
+	transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+	background: rgba(104,157,106,0.8);
+	color: rgba(27,27,27,0.8);
+	border-radius: 15px;
+	min-width: 40px;
+	transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:hover {
+	background: rgba(235,219,178,0.8);
+	color: rgba(100,187,57,0.8);
+	border-radius: 15px;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+.modules-left{
+	font-size: 20px;
+}
+
+.modules-center{
+}
+.modules-right{
+	font-size: 20px;
+}
+
+
+#custom-rofisearch{
+	background: rgba(27,27,27,0.6);
+	color: #689d6a;
+	font-size:24px;
+	padding-right: 7px;
+	margin-left: 10px;
+	margin-right: 5px;
+	border-radius: 15px;
+	min-width: 40px;
+}
+
+#group-media{
+		
+	background: rgba(27,27,27,0.6);
+	border-radius: 15px;
+	padding-left: .5em;
+	padding-right: .5em;
+	margin: 0px 5px;
+
+	
+}
+
+#custom-musiclogo{
+	color: #689d6a;
+	font-size: 24px;
+	margin-right: 6px;
+	padding: 0px 3px;
+}
+
+#custom-pp,
+#custom-prev,
+#custom-next{
+	padding: 0px 5px;
+}
+
+#window{
+		
+	background: rgba(27,27,27,0.6);
+	border-radius: 15px;
+	padding-left: .5em;
+	padding-right: .5em;
+	margin: 0px 5px;
+
+	
+}
+
+
+#custom-power{
+	background: rgba(27,27,27,0.6);
+	color: #689d6a;
+	font-size:24px;
+	padding-right: 5px;
+	margin-left: 5px;
+	margin-right: 10px;
+	border-radius: 15px;
+	min-width: 40px;
+
+}
+
+#group-soft{
+		
+	background: rgba(27,27,27,0.6);
+	border-radius: 15px;
+	padding-left: .5em;
+	padding-right: .5em;
+	margin: 0px 5px;
+
+	
+}
+#disk,
+#disk-nvme,
+#disk-ssd,
+#cpu,
+#memory{
+	margin-right: 0.5em;
+	margin-left: 0.5em;
+ }
+
+#custom-osrs,
+#custom-firefox, 
+#custom-filebrowser,
+#custom-steam,
+#custom-spotify,
+#custom-help{
+	color: #ebdbb2;
+	padding: 0px 10px;
+}
+
+#group-sys{
+		
+	background: rgba(27,27,27,0.6);
+	border-radius: 15px;
+
+
+	
+}
+
+#network,
+#pulseaudio{
+	margin: 0px 10px;
+}
+
+
+#clock{
+	background: rgba(27,27,27,0.6);
+	color: #ebdbb2;
+	border-radius: 15px;
+	padding: 0px 10px;
+	margin: 0px 5px;
+
+}
+
+#group-sysmon{
+ padding: 0px 10px;
+ }

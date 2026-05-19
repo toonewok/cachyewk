@@ -1,0 +1,10 @@
+export EDITOR='nvim'
+export theme="fuji"
+export config_path=/home/bailey/.config
+export GTK_THEME="Colloid-Dark-Gruvbox"
+export GTK_ICON_THEME="Gruvbox Plus Dark"
+export GTK_FONT_NAME="RobotoMono Nerd Font 14"
+export zshtheme="ewk2"
+export wallpe="false"
+export notif="true"
+export hyprcur="ccgruv"
