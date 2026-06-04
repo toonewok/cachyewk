@@ -9,7 +9,7 @@ read -s varpw
 echo "$varpw" | sudo -S pacman -Syy
 
 #installs extra base packages not included with cachy
-echo "$varpw" | sudo -S pacman -S --noconfirm --needed xclip hyprlock hyprpaper nvim rofi waybar zsh nwg-look nemo pavucontrol nerd-fonts spotify-launcher steam virt-manager keepassxc swayidle gimp calibre blender kicad kicad-library inkscape qbittorrent prismlauncher obs-studio vlc shotcut grim imagemagick wl-clipboard
+echo "$varpw" | sudo -S pacman -S --noconfirm --needed xclip hyprlock hyprpaper nvim rofi waybar zsh nwg-look nemo pavucontrol nerd-fonts spotify-launcher steam virt-manager keepassxc swayidle gimp calibre blender kicad kicad-library inkscape qbittorrent prismlauncher obs-studio vlc shotcut grim imagemagick wl-clipboard wine
 
 #installs ohmyzsh
 RUNZSH=no CHSH=no KEEPZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -46,6 +46,13 @@ if [ "$monname" = "Virtual-1" ]; then
 
 else
 	echo "normal system detected, proceeding normally"
+	#replaces all virtual tags
+	sed -i -e "s|Virtual-1|$monname|g" config/hypr/core/monitors.conf
+	sed -i -e "s|1920x1080|$monres|g" config/hypr/core/monitors.conf
+	sed -i -e "s|Virtual-1|$monname|g" config/hypr/core/winwork.conf
+	sed -i -e "s|Virtual-1|$monname|g" config/waybar/config.jsonc
+	sed -i -e "s|Virtual-1|$monname|g" config/waybar/modules.jsonc
+
 fi
 
 #copies the files to their respective paths

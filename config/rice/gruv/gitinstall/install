@@ -9,7 +9,7 @@ read -s varpw
 echo "$varpw" | sudo -S pacman -Syy
 
 #installs extra base packages not included with cachy
-echo "$varpw" | sudo -S pacman -S --noconfirm --needed xclip hyprlock hyprpaper nvim rofi waybar zsh nwg-look nemo pavucontrol nerd-fonts spotify-launcher steam virt-manager keepassxc swayidle gimp calibre blender kicad kicad-library inkscape qbittorrent prismlauncher obs-studio vlc shotcut
+echo "$varpw" | sudo -S pacman -S --noconfirm --needed xclip hyprlock hyprpaper nvim rofi waybar zsh nwg-look nemo pavucontrol nerd-fonts spotify-launcher steam virt-manager keepassxc swayidle gimp calibre blender kicad kicad-library inkscape qbittorrent prismlauncher obs-studio vlc shotcut grim imagemagick wl-clipboard
 
 #installs ohmyzsh
 RUNZSH=no CHSH=no KEEPZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -24,19 +24,10 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 #creates basic directories
 mkdir -p ~/Pictures
 mkdir -p ~/Documents
-mkdir -p ~/.icons
-mkdir -p ~/.themes
 mkdir -p ~/shellscripts
 
 #sets getty user for hyprlock auto login
 sed -i -e "s|<user>|$USER|g" hyprlockgetty
-
-
-tar -xzf doticons.tgz
-tar -xzf dotthemes.tgz
-
-
-rm *.tgz
 
 zshtext=$(cat hyprlockzsh)
 gettytext=$(cat hyprlockgetty)
@@ -47,17 +38,23 @@ gettytext=$(cat hyprlockgetty)
 #the easiest way to do this is to just see if the monitor
 #is Virtual-1
 monname=$(hyprctl monitors all | sed '1!d' | grep Monitor | cut -d ' ' -f 2)
+monres=$(hyprctl monitors all | sed '2!d' | cut -d ' ' -f 1)
+monres=$(echo "$monres"| awk '{print $1}')
+
 if [ "$monname" = "Virtual-1" ]; then
-	echo "vm detected, modifying files as necessary"
+	echo "vm detected"
 
 else
 	echo "normal system detected, proceeding normally"
+	#replaces all virtual tags
+	sed -i -e "s|Virtual-1|$monname|g" config/hypr/core/monitors.conf
+	sed -i -e "s|1920x1080|$monres|g" config/hypr/core/monitors.conf
+	sed -i -e "s|Virtual-1|$monname|g" config/hypr/core/winwork.conf
+
 fi
 
 #copies the files to their respective paths
-cp -r dotconfig/* ~/.config/
-cp -r doticons/* ~/.icons/
-cp -r dotthemes/* ~/.themes/
+cp -r config/* ~/.config/
 cp -r Pictures/* ~/Pictures
 cp -r shellscripts/* ~/shellscripts/
 
@@ -70,6 +67,15 @@ rm -rf ~/yay-bin
 
 #installs vesktop
 echo "$varpw" | yay -S --noconfirm --needed Vesktop
+
+#installs quickshell and screenshot tool
+echo "$varpw" | yay -S --noconfirm --needed quickshell
+git clone https://github.com/jamdon2/hyprquickshot ~/.config/quickshell/hyprquickshot
+
+
+#installs bibata cursor(this is a good default cursor)
+echo "$varpw" | yay -S --noconfirm --needed bibata-cursor-theme-bin
+
 
 #installs neovim plugins
 nvim +'PlugInstall --sync' +qa
